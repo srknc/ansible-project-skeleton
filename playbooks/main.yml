@@ -1,0 +1,67 @@
+---
+
+######################################
+#            All Servers
+######################################
+- hosts: "{{ env }}"
+  become: true
+  vars_files:
+  - ../vars/vars.yml
+  - ../vars/credentials.yml
+  roles:
+  - essentials
+  - security
+  - user-management
+  - logging
+  - monitoring
+
+
+###################
+#       MNG
+###################
+
+- hosts: "{{ env }}-mng"
+  become: true
+  vars_files:
+  - ../vars/vars.yml
+  - ../vars/credentials.yml
+  roles:
+  - mng
+
+- hosts: "{{ env }}-vpn"
+  become: true
+  vars_files:
+  - ../vars/vars.yml
+  - ../vars/credentials.yml
+  roles:
+  - vpn
+
+- hosts: "{{ env }}-jenkins"
+  become: true
+  vars_files:
+  - ../vars/vars.yml
+  - ../vars/credentials.yml
+  roles:
+  - jenkins
+
+
+###################
+#       project1
+###################
+- hosts: "{{ env }}-project1-web"
+  become: true
+  vars_files:
+  - ../vars/vars.yml
+  - ../vars/credentials.yml
+  roles:
+  - project1-web
+
+- hosts: "{{ env }}-project1-db"
+  become: true
+  vars_files:
+  - ../vars/vars.yml
+  - ../vars/credentials.yml
+  roles:
+  - project2-db
+
+

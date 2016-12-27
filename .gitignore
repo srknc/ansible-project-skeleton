@@ -1,0 +1,9 @@
+*.swp
+*.pyc
+*.retry
+.DS_Store
+
+# ignore private/public keys
+*_id_rsa*
+*.pem
+
